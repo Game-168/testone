@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My SPA Website</title>
+    <meta property="og:title" content="DB | เกมที่คุณไม่ควรพลาด!" />
+    <meta property="og:description" content="สนุก ท้าทาย พร้อมลุ้นรางวัลในเกมสไตล์คาสิโนสุดหรู" />
+    <meta property="og:url" content="https://game-168.github.io/testone/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://graph.facebook.com/Fashion45oo/picture?type=large" />
+    <meta property="og:image:alt" content="รูปโปรไฟล์เพจ Fashion45oo" />
+  <style>
+    nav a { margin: 10px; cursor: pointer; color: green; }
+    section { display: none; padding: 20px; }
+    section.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" 
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0">
+  </script>
+
+  <nav>
+    <a onclick="navigate('facebook')">เพจ Facebook</a>
+    <a onclick="navigate('home')">หน้าแรก</a>
+    <a onclick="navigate('about')">เกี่ยวกับ</a>
+    
+  </nav>
+
+  <main>
+
+    <section id="facebook"  class="active">
+      <h1>ติดตามเพจเรา</h1>
+      <!-- Facebook Page Plugin -->
+      <div class="fb-page"
+           data-href="https://www.facebook.com/Fashion45oo/"
+           data-tabs="timeline"
+           data-width=""
+           data-height=""
+           data-small-header="false"
+           data-adapt-container-width="true"
+           data-hide-cover="false"
+           data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/Fashion45oo/" class="fb-xfbml-parse-ignore">
+          <a href="https://www.facebook.com/Fashion45oo/">Fashion45oo</a>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="home">
+      <h1>ยินดีต้อนรับ!</h1>
+      <p>นี่คือหน้าแรก</p>
+    </section>
+
+    <section id="about">
+      <h1>เกี่ยวกับเรา</h1>
+      <p>เนื้อหาเกี่ยวกับบริษัท</p>
+    </section>
+
+
+  </main>
+
+  <script>
+    function navigate(pageId) {
+      // ซ่อนทุก section
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      // แสดง section ที่ต้องการ
+      document.getElementById(pageId).classList.add("active");
+
+      // ถ้าคือหน้า facebook ต้องเรียกให้ SDK โหลดใหม่
+      if (pageId === 'facebook' && typeof FB !== 'undefined') {
+        FB.XFBML.parse();
+      }
+    }
+  </script>
+</body>
+</html>
